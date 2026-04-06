@@ -17,67 +17,114 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f2b3d 0%, #1a3a4f 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: shift 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes shift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
         }
 
         /* NFC Card Container */
         .nfc-container {
-            max-width: 480px;
+            max-width: 500px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         /* Main Card */
         .nfc-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 2.5rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 3rem;
             overflow: hidden;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 140, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .nfc-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.4);
         }
 
         /* Card Header with Chip */
         .card-header {
-            background: linear-gradient(135deg, #ff8c00, #ff6b00);
-            padding: 1.8rem 1.8rem 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem 1.5rem 1.5rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
 
         .nfc-chip-icon {
             background: rgba(255, 255, 255, 0.2);
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: white;
             backdrop-filter: blur(4px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .card-header h1 {
             color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
         }
 
         .card-header .title {
             color: rgba(255, 255, 255, 0.9);
             font-size: 0.85rem;
             margin-top: 0.3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .nfc-wave {
@@ -86,53 +133,63 @@
             left: 0;
             right: 0;
             height: 40px;
-            background: white;
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 50% 50% 0 0;
+            z-index: 1;
         }
 
         /* Profile Section */
         .profile-section {
-            padding: 1.8rem 1.5rem 1rem;
+            padding: 2rem 1.5rem 1rem;
             text-align: center;
-            border-bottom: 1px solid #eef2f6;
+            background: white;
         }
 
         .avatar {
-            background: #fff0e0;
-            width: 90px;
-            height: 90px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: -3rem auto 1rem;
-            font-size: 3rem;
-            color: #ff8c00;
+            font-size: 3.2rem;
+            color: white;
             border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .profile-section h2 {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #1e2a3e;
+            color: #1e293b;
+            margin-top: 0.5rem;
         }
 
         .profile-section .badge {
-            display: inline-block;
-            background: #ff8c0015;
-            color: #ff8c00;
-            padding: 0.3rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            color: #667eea;
+            padding: 0.4rem 1.2rem;
             border-radius: 50px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 0.5rem;
         }
 
         .company {
-            color: #5c6f87;
+            color: #64748b;
             margin-top: 0.5rem;
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         /* Contact Buttons Grid */
@@ -141,6 +198,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            background: white;
         }
 
         .contact-btn {
@@ -148,17 +206,39 @@
             align-items: center;
             gap: 1rem;
             padding: 1rem 1.2rem;
-            background: #f8fafd;
+            background: #f8fafc;
             border-radius: 1.2rem;
             text-decoration: none;
-            transition: all 0.25s;
-            border: 1px solid #e9edf2;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
         }
 
         .contact-btn i {
-            width: 32px;
-            font-size: 1.5rem;
+            width: 36px;
+            font-size: 1.6rem;
             text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn:hover i {
+            transform: scale(1.1);
         }
 
         .contact-btn .btn-info {
@@ -166,21 +246,28 @@
         }
 
         .contact-btn .btn-label {
-            font-size: 0.75rem;
-            color: #7c8ea0;
-            letter-spacing: 0.3px;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+            font-weight: 600;
         }
 
         .contact-btn .btn-value {
             font-weight: 700;
-            color: #1e2a3e;
+            color: #1e293b;
             font-size: 0.95rem;
         }
 
         .contact-btn .arrow {
-            color: #ff8c00;
-            font-size: 0.9rem;
+            color: #667eea;
+            font-size: 1rem;
             opacity: 0.6;
+            transition: transform 0.3s;
+        }
+
+        .contact-btn:hover .arrow {
+            transform: translateX(5px);
+            opacity: 1;
         }
 
         /* Individual button hover colors */
@@ -200,63 +287,216 @@
         }
         .contact-btn.phone:hover i { color: #34B7F1; }
         .contact-btn.web:hover {
-            background: #ff8c0010;
-            border-color: #ff8c00;
+            background: #667eea15;
+            border-color: #667eea;
         }
-        .contact-btn.web:hover i { color: #ff8c00; }
+        .contact-btn.web:hover i { color: #667eea; }
 
         /* Social Links */
         .social-links {
-            padding: 1rem 1.5rem 1.8rem;
-            border-top: 1px solid #eef2f6;
+            padding: 1.2rem 1.5rem 1.8rem;
+            border-top: 1px solid #e2e8f0;
             text-align: center;
+            background: white;
         }
 
         .social-links p {
-            font-size: 0.8rem;
-            color: #7c8ea0;
-            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .social-icons a {
-            width: 45px;
-            height: 45px;
-            background: #f0f4f9;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: #1e466e;
-            transition: all 0.2s;
+            font-size: 1.5rem;
+            color: #667eea;
+            transition: all 0.3s;
             text-decoration: none;
         }
 
         .social-icons a:hover {
-            background: #ff8c00;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            transform: scale(1.1);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
         .tap-hint {
             text-align: center;
             padding: 1rem 1rem 1.2rem;
             font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50px;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
         }
 
         .tap-hint i {
             font-size: 0.9rem;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .nfc-container {
+                max-width: 100%;
+            }
+
+            .card-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .nfc-chip-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 2rem;
+            }
+
+            .avatar {
+                width: 85px;
+                height: 85px;
+                font-size: 2.8rem;
+                margin-top: -2.5rem;
+            }
+
+            .profile-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-btn {
+                padding: 0.8rem 1rem;
+                gap: 0.8rem;
+            }
+
+            .contact-btn i {
+                width: 28px;
+                font-size: 1.3rem;
+            }
+
+            .contact-btn .btn-value {
+                font-size: 0.85rem;
+            }
+
+            .contact-btn .btn-label {
+                font-size: 0.65rem;
+            }
+
+            .social-icons a {
+                width: 42px;
+                height: 42px;
+                font-size: 1.3rem;
+            }
+
+            .tap-hint {
+                font-size: 0.6rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid {
+                padding: 1rem;
+                gap: 0.8rem;
+            }
+
+            .contact-btn {
+                padding: 0.7rem 0.9rem;
+            }
+
+            .contact-btn .btn-value {
+                font-size: 0.8rem;
+            }
+
+            .social-links {
+                padding: 1rem;
+            }
+
+            .social-icons {
+                gap: 0.8rem;
+            }
+
+            .social-icons a {
+                width: 38px;
+                height: 38px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Landscape mode */
+        @media (max-width: 768px) and (orientation: landscape) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .nfc-container {
+                max-width: 450px;
+            }
+
+            .contact-grid {
+                gap: 0.6rem;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 0.9rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .contact-btn:active {
+                transform: scale(0.98);
+            }
+
+            .social-icons a:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -276,9 +516,13 @@
                 <div class="avatar">
                     <i class="fas fa-id-card"></i>
                 </div>
-                <h2>Mehdi <i class="fas fa-check-circle" style="color:#ff8c00; font-size:1.2rem;"></i></h2>
-                <div class="badge">General Manager</div>
-                <div class="company"><i class="fas fa-building"></i> Melan Electronics</div>
+                <h2>Mehdi <i class="fas fa-check-circle" style="color:#667eea; font-size:1.2rem;"></i></h2>
+                <div class="badge">
+                    <i class="fas fa-star"></i> General Manager
+                </div>
+                <div class="company">
+                    <i class="fas fa-building"></i> Melan Electronics
+                </div>
             </div>
 
             <div class="contact-grid">
@@ -312,9 +556,9 @@
                     <div class="arrow"><i class="fas fa-chevron-right"></i></div>
                 </a>
 
-                <!-- Website - Redirects to landing-page.html (display text stays melan-electronics.com) -->
+                <!-- Website -->
                 <a href="#" class="contact-btn web" id="websiteBtn">
-                    <i class="fas fa-globe" style="color:#ff8c00;"></i>
+                    <i class="fas fa-globe" style="color:#667eea;"></i>
                     <div class="btn-info">
                         <div class="btn-label">WEBSITE</div>
                         <div class="btn-value">melan-electronics.com</div>
@@ -344,7 +588,6 @@
             whatsapp: "+212612345678",
             email: "mehdi@melan-electronics.com",
             phone: "+212612345678",
-            // Website now redirects to local landing-page.html
             website: "landing-page.html"
         };
 
@@ -354,35 +597,46 @@
             facebook: "https://www.facebook.com/melanelectronics"
         };
 
-        // Set links
+        // Set links with error checking
         const whatsappBtn = document.getElementById('whatsappBtn');
         const emailBtn = document.getElementById('emailBtn');
         const phoneBtn = document.getElementById('phoneBtn');
         const websiteBtn = document.getElementById('websiteBtn');
 
-        // WhatsApp
-        whatsappBtn.setAttribute('href', `https://wa.me/${contact.whatsapp.replace(/[^0-9+]/g, '')}?text=${encodeURIComponent("Hello Mehdi, I got your NFC card from Melan Electronics!")}`);
-        whatsappBtn.setAttribute('target', '_blank');
+        if (whatsappBtn) {
+            whatsappBtn.setAttribute('href', `https://wa.me/${contact.whatsapp.replace(/[^0-9+]/g, '')}?text=${encodeURIComponent("Hello Mehdi, I got your NFC card from Melan Electronics!")}`);
+            whatsappBtn.setAttribute('target', '_blank');
+        }
 
-        // Email
-        emailBtn.setAttribute('href', `mailto:${contact.email}?subject=NFC%20Card%20-%20Mehdi&body=Hi%20Mehdi%2C%20I'd%20like%20to%20know%20more%20about%20Melan%20Electronics%20home%20appliances.`);
+        if (emailBtn) {
+            emailBtn.setAttribute('href', `mailto:${contact.email}?subject=NFC%20Card%20-%20Mehdi&body=Hi%20Mehdi%2C%20I'd%20like%20to%20know%20more%20about%20Melan%20Electronics%20home%20appliances.`);
+        }
         
-        // Phone
-        phoneBtn.setAttribute('href', `tel:${contact.phone.replace(/\s/g, '')}`);
+        if (phoneBtn) {
+            phoneBtn.setAttribute('href', `tel:${contact.phone.replace(/\s/g, '')}`);
+        }
         
-        // Website - redirects to landing-page.html (opens in same tab for seamless experience)
-        // The displayed text remains "melan-electronics.com" but the link goes to landing-page.html
-        websiteBtn.setAttribute('href', contact.website);
-        // Remove target="_blank" to open in same tab (or keep '_blank' for new tab)
-        // websiteBtn.setAttribute('target', '_blank');  // commented out - opens in same tab
+        if (websiteBtn) {
+            websiteBtn.setAttribute('href', contact.website);
+        }
 
         // Social icons
-        document.getElementById('igLink').setAttribute('href', social.instagram);
-        document.getElementById('igLink').setAttribute('target', '_blank');
-        document.getElementById('tiktokLink').setAttribute('href', social.tiktok);
-        document.getElementById('tiktokLink').setAttribute('target', '_blank');
-        document.getElementById('fbLink').setAttribute('href', social.facebook);
-        document.getElementById('fbLink').setAttribute('target', '_blank');
+        const igLink = document.getElementById('igLink');
+        const tiktokLink = document.getElementById('tiktokLink');
+        const fbLink = document.getElementById('fbLink');
+
+        if (igLink) {
+            igLink.setAttribute('href', social.instagram);
+            igLink.setAttribute('target', '_blank');
+        }
+        if (tiktokLink) {
+            tiktokLink.setAttribute('href', social.tiktok);
+            tiktokLink.setAttribute('target', '_blank');
+        }
+        if (fbLink) {
+            fbLink.setAttribute('href', social.facebook);
+            fbLink.setAttribute('target', '_blank');
+        }
     </script>
 </body>
-</html>
+</html>gi
