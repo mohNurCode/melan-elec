@@ -131,10 +131,6 @@
       box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
     }
 
-    .nav-cta:hover {
-      transform: translateY(-2px);
-    }
-
     .menu-toggle {
       display: none;
       width: 45px;
@@ -184,44 +180,182 @@
       transform: rotate(-45deg);
     }
 
-    /* ========== HERO WITH VIDEO BACKGROUND ========== */
+    /* ========== HERO SECTION WITH ANIMATED LOGO ========== */
     .hero {
       min-height: 100vh;
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 120px 8% 80px;
-      overflow: hidden;
-      flex-wrap: wrap;
+      background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
       gap: 60px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* Background Video */
-    .hero-video-bg {
+    /* Animated Background Elements */
+    .hero-bg-shape {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,102,255,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
       z-index: 0;
     }
 
-    /* Video Overlay for better text readability */
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.92) 0%,
-        rgba(255, 255, 255, 0.85) 50%,
-        rgba(255, 255, 255, 0.92) 100%);
-      z-index: 1;
+    .shape1 { top: -100px; right: -100px; animation: floatShape 8s ease-in-out infinite; }
+    .shape2 { bottom: -100px; left: -100px; animation: floatShape 10s ease-in-out infinite reverse; }
+    .shape3 { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; animation: pulseShape 6s ease-in-out infinite; }
+
+    @keyframes floatShape {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(30px, 20px); }
     }
 
+    @keyframes pulseShape {
+      0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    /* Animated Logo Container */
+    .hero-logo-container {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animated-logo {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Rotating Ring */
+    .logo-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid rgba(0, 102, 255, 0.2);
+      border-radius: 50%;
+      animation: rotateRing 20s linear infinite;
+    }
+
+    .logo-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid transparent;
+      border-top-color: #0066ff;
+      border-right-color: #00ccff;
+      border-radius: 50%;
+      animation: rotateRing 3s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Inner Circle */
+    .logo-inner {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,204,255,0.05));
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,102,255,0.3);
+      animation: pulseInner 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseInner {
+      0%, 100% { box-shadow: 0 0 20px rgba(0,102,255,0.2); }
+      50% { box-shadow: 0 0 50px rgba(0,102,255,0.4); }
+    }
+
+    /* M Letter Animation */
+    .logo-letter-m {
+      font-size: 80px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0066ff, #00ccff, #0066ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite, letterFloat 2s ease-in-out infinite;
+      position: relative;
+      display: inline-block;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes letterFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Logo Text */
+    .logo-text-full {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .logo-text-full .brand-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #1a1a1a, #0066ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo-text-full .brand-tag {
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 3px;
+    }
+
+    /* Orbiting Dots */
+    .orbiting-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #0066ff;
+      border-radius: 50%;
+      animation: orbit 4s linear infinite;
+    }
+
+    @keyframes orbit {
+      0% { transform: rotate(0deg) translateX(140px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
+    }
+
+    .dot1 { animation-delay: 0s; }
+    .dot2 { animation-delay: 1s; }
+    .dot3 { animation-delay: 2s; }
+    .dot4 { animation-delay: 3s; }
+
+    /* Hero Content */
     .hero-content {
       flex: 1;
       min-width: 300px;
@@ -233,8 +367,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 102, 255, 0.15);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 102, 255, 0.1);
       padding: 8px 20px;
       border-radius: 50px;
       font-size: 14px;
@@ -266,7 +399,7 @@
 
     .hero p {
       font-size: 1.1rem;
-      color: #444;
+      color: #555;
       margin-bottom: 40px;
       max-width: 500px;
       line-height: 1.6;
@@ -299,8 +432,7 @@
 
     .btn-secondary {
       padding: 14px 35px;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
+      background: transparent;
       border: 2px solid #0066ff;
       border-radius: 50px;
       color: #0066ff;
@@ -335,54 +467,72 @@
 
     .stat-label {
       font-size: 0.85rem;
-      color: #555;
+      color: #666;
     }
 
-    .hero-image {
-      flex: 1;
-      min-width: 300px;
-      position: relative;
-      z-index: 2;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+        transform: translateY(-150%);
+        transition: 0.3s;
+        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+      }
+      
+      .nav-links.active {
+        transform: translateY(0);
+      }
+      
+      .hero {
+        text-align: center;
+        padding: 100px 5% 60px;
+      }
+      
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .btn-group {
+        justify-content: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .animated-logo {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .logo-inner {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .logo-letter-m {
+        font-size: 60px;
+      }
+      
+      @keyframes orbit {
+        0% { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+      }
     }
 
-    .hero-image img {
-      width: 100%;
-      max-width: 500px;
-      border-radius: 30px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .floating-card {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .card1 {
-      top: -20px;
-      right: 20px;
-      animation-delay: 0s;
-    }
-
-    .card2 {
-      bottom: 40px;
-      left: -20px;
-      animation-delay: 1s;
-    }
-
-    /* Sections */
+    /* Rest of sections (same as before) */
     .section {
       padding: 80px 5%;
       max-width: 1400px;
@@ -404,7 +554,6 @@
       font-size: 1.1rem;
     }
 
-    /* Product Grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -443,17 +592,6 @@
       color: #0066ff;
     }
 
-    .product-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
-
-    .product-card p {
-      color: #666;
-      line-height: 1.5;
-    }
-
-    /* Features */
     .features {
       background: #f8faff;
       border-radius: 40px;
@@ -474,12 +612,6 @@
       margin-bottom: 15px;
     }
 
-    .feature h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    /* Stats Section */
     .stats-section {
       background: linear-gradient(135deg, #0066ff, #0052cc);
       border-radius: 30px;
@@ -500,12 +632,6 @@
       font-weight: 800;
     }
 
-    .stat-white p {
-      color: rgba(255,255,255,0.9);
-      margin-top: 5px;
-    }
-
-    /* Testimonials */
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -517,26 +643,8 @@
       border: 1px solid #eef2f6;
       border-radius: 20px;
       padding: 30px;
-      transition: 0.3s;
     }
 
-    .testimonial-card:hover {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
-
-    .testimonial-card i {
-      color: #0066ff;
-      font-size: 2rem;
-      opacity: 0.5;
-      margin-bottom: 15px;
-    }
-
-    .stars {
-      color: #ffc107;
-      margin-bottom: 10px;
-    }
-
-    /* CTA */
     .cta {
       background: #f8faff;
       border-radius: 30px;
@@ -545,7 +653,6 @@
       margin: 40px 5%;
     }
 
-    /* Footer */
     .footer {
       background: #1a1a1a;
       color: #999;
@@ -571,7 +678,6 @@
       text-decoration: none;
       display: block;
       margin-bottom: 10px;
-      transition: 0.3s;
     }
 
     .footer a:hover {
@@ -606,7 +712,6 @@
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Back to Top */
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -622,7 +727,6 @@
       opacity: 0;
       transition: 0.3s;
       z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,102,255,0.3);
     }
 
     .back-to-top.visible {
@@ -633,86 +737,6 @@
       color: white;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 30px;
-        gap: 20px;
-        transform: translateY(-150%);
-        transition: 0.3s;
-        box-shadow: 0 20px 30px rgba(0,0,0,0.1);
-      }
-      
-      .nav-links.active {
-        transform: translateY(0);
-      }
-      
-      .nav-links a {
-        justify-content: center;
-      }
-      
-      .nav-links a i {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .hero {
-        text-align: center;
-        padding: 100px 5% 60px;
-      }
-      
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .btn-group {
-        justify-content: center;
-      }
-      
-      .hero-stats {
-        justify-content: center;
-      }
-      
-      .features {
-        padding: 40px 20px;
-      }
-      
-      .cta {
-        padding: 40px 20px;
-      }
-      
-      .floating-card {
-        display: none;
-      }
-    }
-
-    /* Video Controls Hint */
-    .video-hint {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 3;
-      background: rgba(0,0,0,0.5);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      backdrop-filter: blur(5px);
-      pointer-events: none;
-    }
-
-    /* Fade Up Animation */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -727,7 +751,7 @@
 </head>
 <body>
 
-<!-- Creative Navigation -->
+<!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="nav-container">
     <div class="logo">
@@ -749,20 +773,12 @@
   </div>
 </nav>
 
-<!-- Hero Section with Video Background -->
+<!-- Hero Section with Animated Logo -->
 <section class="hero" id="home">
-  <!-- Background Video - Multiple sources for compatibility -->
-  <video class="hero-video-bg" autoplay loop muted playsinline poster="https://placehold.co/1920x1080/e8f0fe/0066ff">
-    <!-- Option 1: Technology Background (Best) -->
-    <source src="https://cdn.coverr.co/videos/coverr-typing-on-a-laptop-1585330741577/1080p.mp4" type="video/mp4">
-    <!-- Option 2: Abstract Tech Background -->
-    <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4">
-    <!-- Option 3: Electronics Showroom -->
-    <source src="https://cdn.pixabay.com/video/2023/06/20/168912-835567333_large.mp4" type="video/mp4">
-  </video>
-  
-  <!-- Overlay for text readability -->
-  <div class="hero-overlay"></div>
+  <!-- Background Shapes -->
+  <div class="hero-bg-shape shape1"></div>
+  <div class="hero-bg-shape shape2"></div>
+  <div class="hero-bg-shape shape3"></div>
   
   <div class="hero-content">
     <div class="badge">
@@ -790,20 +806,27 @@
     </div>
   </div>
   
-  <div class="hero-image">
-    <img src="https://placehold.co/600x500/e8f0fe/0066ff?text=Premium+Appliances" alt="Premium Appliances">
-    <div class="floating-card card1">
-      <i class="fas fa-tv" style="color: #0066ff;"></i>
-      <span>Smart TVs</span>
+  <!-- Animated Logo Section -->
+  <div class="hero-logo-container">
+    <div class="animated-logo">
+      <!-- Rotating Rings -->
+      <div class="logo-ring"></div>
+      
+      <!-- Orbiting Dots -->
+      <div class="orbiting-dot dot1"></div>
+      <div class="orbiting-dot dot2"></div>
+      <div class="orbiting-dot dot3"></div>
+      <div class="orbiting-dot dot4"></div>
+      
+      <!-- Inner Logo -->
+      <div class="logo-inner">
+        <div class="logo-letter-m">M</div>
+        <div class="logo-text-full">
+          <div class="brand-name">MELAN</div>
+          <div class="brand-tag">ELECTRONICS</div>
+        </div>
+      </div>
     </div>
-    <div class="floating-card card2">
-      <i class="fas fa-thermometer-half" style="color: #0066ff;"></i>
-      <span>Smart Fridges</span>
-    </div>
-  </div>
-  
-  <div class="video-hint">
-    <i class="fas fa-video"></i> Experience Innovation
   </div>
 </section>
 
@@ -983,25 +1006,6 @@
       nav.classList.remove('scrolled');
       backBtn.classList.remove('visible');
     }
-    
-    // Update active link
-    const sections = document.querySelectorAll('section, .stats-section, .features, .cta');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 150;
-      if(pageYOffset >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if(link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
   });
   
   // Counter animation
@@ -1070,15 +1074,6 @@
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
-    });
-  }
-  
-  // Video fallback
-  const video = document.querySelector('.hero-video-bg');
-  if(video) {
-    video.addEventListener('error', function() {
-      this.style.display = 'none';
-      document.querySelector('.hero').style.background = 'linear-gradient(135deg, #f8faff, #ffffff)';
     });
   }
 </script>
