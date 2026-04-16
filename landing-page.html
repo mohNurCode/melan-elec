@@ -1,650 +1,759 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Melan Electronics | Premium Home Appliances</title>
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Melan Electronics | Future of Home Appliances</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f5f7fb;
-            color: #1e293b;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+    /* Animated Background */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: linear-gradient(135deg, #000000 0%, #0a0a2a 50%, #000000 100%);
+    }
 
-        /* Header */
-        .header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(255,255,255,0.95);
-            width: 100%;
-        }
-        .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            max-width: 1280px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #1e466e;
-        }
-        .logo span {
-            color: #ff8c00;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #1e2a3e;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #ff8c00;
-        }
+    .glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,100,255,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #1e466e 0%, #143250 100%);
-            color: white;
-            padding: 2rem 0;
-            border-radius: 0 0 2rem 2rem;
-            margin-bottom: 2rem;
-        }
-        .hero-content {
-            text-align: center;
-            padding: 1.5rem;
-        }
-        .hero h1 {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-        .hero p {
-            font-size: 1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
+    /* Modern Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 5%;
+      z-index: 1000;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        /* Contact Bar */
-        .contact-bar {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 1rem;
-            margin: -1.5rem 1rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.5rem 1rem;
-            background: #f8fafc;
-            border-radius: 60px;
-            text-decoration: none;
-            color: #1e466e;
-            font-weight: 500;
-            transition: 0.2s;
-            font-size: 0.85rem;
-            flex: 0 1 auto;
-        }
-        .contact-link i {
-            color: #ff8c00;
-            font-size: 1rem;
-        }
-        .contact-link:hover {
-            background: #ff8c00;
-            color: white;
-        }
-        .contact-link:hover i {
-            color: white;
-        }
+    .nav.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 100, 255, 0.3);
+      padding: 15px 5%;
+    }
 
-        /* Products Section */
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 1.5rem 0 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .section-title i {
-            color: #ff8c00;
-            font-size: 1.4rem;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .product {
-            background: white;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: 0.25s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid #eef2f6;
-        }
-        .product:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.12);
-        }
-        .product-icon {
-            background: #fef5e8;
-            padding: 1.5rem;
-            text-align: center;
-            font-size: 2.8rem;
-            color: #ff8c00;
-        }
-        .product-info {
-            padding: 1rem;
-        }
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-info p {
-            color: #5c6f87;
-            font-size: 0.85rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.4;
-        }
-        .price {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #1e466e;
-        }
-        .shop-btn {
-            display: inline-block;
-            margin-top: 0.7rem;
-            background: #ff8c00;
-            color: white;
-            padding: 0.45rem 1.1rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: background 0.2s;
-        }
-        .shop-btn:hover {
-            background: #e07a00;
-        }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        /* Footer Social */
-        .footer-social {
-            background: #1e2a3e;
-            color: white;
-            border-radius: 2rem 2rem 0 0;
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .footer-social h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-        .social-icons-footer {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin: 1.2rem 0;
-            flex-wrap: wrap;
-        }
-        .social-icons-footer a {
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            transition: 0.2s;
-            text-decoration: none;
-        }
-        .social-icons-footer a:hover {
-            background: #ff8c00;
-            transform: scale(1.1);
-            color: #1e2a3e;
-        }
-        .copyright {
-            font-size: 0.75rem;
-            opacity: 0.7;
-            margin-top: 1.2rem;
-            padding: 0 1rem;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff, #0066ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -1px;
+    }
 
-        /* Tablet Styles */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .container {
-                padding: 0 2rem;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 1.8rem;
-            }
-            .contact-bar {
-                padding: 1rem 1.5rem;
-                gap: 1rem;
-            }
-            .contact-link {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
+    .nav-links {
+      display: flex;
+      gap: 50px;
+      list-style: none;
+    }
 
-        /* Mobile Styles */
-        @media (max-width: 767px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .nav-bar {
-                flex-direction: column;
-                text-align: center;
-                padding: 0.8rem 1rem;
-            }
-            
-            .logo h1 {
-                font-size: 1.3rem;
-            }
-            
-            .nav-links {
-                gap: 1.2rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-            
-            .hero {
-                padding: 1.5rem 0;
-                border-radius: 0 0 1.5rem 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            
-            .hero p {
-                font-size: 0.9rem;
-            }
-            
-            .contact-bar {
-                margin: -1.2rem 0.5rem 1.5rem;
-                padding: 0.8rem;
-                gap: 0.6rem;
-                border-radius: 1.2rem;
-            }
-            
-            .contact-link {
-                padding: 0.45rem 0.9rem;
-                font-size: 0.75rem;
-                gap: 5px;
-            }
-            
-            .contact-link i {
-                font-size: 0.85rem;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-                margin: 1.2rem 0 1rem;
-            }
-            
-            .section-title i {
-                font-size: 1.2rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            
-            .product-icon {
-                padding: 1.2rem;
-                font-size: 2.5rem;
-            }
-            
-            .product-info h3 {
-                font-size: 1.1rem;
-            }
-            
-            .product-info p {
-                font-size: 0.8rem;
-            }
-            
-            .price {
-                font-size: 1.1rem;
-            }
-            
-            .shop-btn {
-                padding: 0.4rem 1rem;
-                font-size: 0.75rem;
-            }
-            
-            .footer-social {
-                padding: 1.5rem 1rem;
-                border-radius: 1.5rem 1.5rem 0 0;
-            }
-            
-            .footer-social h3 {
-                font-size: 1.2rem;
-            }
-            
-            .social-icons-footer {
-                gap: 1rem;
-            }
-            
-            .social-icons-footer a {
-                width: 42px;
-                height: 42px;
-                font-size: 1.3rem;
-            }
-            
-            .copyright {
-                font-size: 0.7rem;
-            }
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
 
-        /* Small Mobile Styles */
-        @media (max-width: 480px) {
-            .contact-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.5rem;
-                margin: -1.2rem 0.5rem 1.5rem;
-            }
-            
-            .contact-link {
-                justify-content: center;
-                padding: 0.6rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.4rem;
-            }
-            
-            .hero p {
-                font-size: 0.85rem;
-            }
-            
-            .section-title {
-                font-size: 1.3rem;
-            }
-            
-            .products-grid {
-                gap: 1rem;
-            }
-        }
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0066ff, #00ccff);
+      transition: 0.3s;
+    }
 
-        /* Landscape orientation optimization */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .hero {
-                padding: 1rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 1.4rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            }
-        }
+    .nav-links a:hover::before {
+      width: 100%;
+    }
 
-        /* Touch-friendly adjustments */
-        @media (hover: none) and (pointer: coarse) {
-            .contact-link, 
-            .shop-btn,
-            .social-icons-footer a,
-            .nav-links a {
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-            }
-            
-            .contact-link:active {
-                transform: scale(0.98);
-            }
-            
-            .shop-btn:active {
-                transform: scale(0.97);
-            }
-        }
+    /* Hero Section with 3D Effect */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      position: relative;
+      overflow: hidden;
+    }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    .hero-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(0, 102, 255, 0.2);
+      border: 1px solid rgba(0, 102, 255, 0.5);
+      border-radius: 50px;
+      font-size: 14px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #ffffff, #0066ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #cccccc;
+      margin-bottom: 40px;
+      max-width: 500px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #0066ff, #00ccff);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+    }
+
+    .btn-secondary {
+      padding: 15px 40px;
+      background: transparent;
+      border: 2px solid #0066ff;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 102, 255, 0.1);
+      border-color: #00ccff;
+    }
+
+    /* 3D Product Showcase */
+    .hero-3d {
+      flex: 1;
+      position: relative;
+      height: 500px;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 30px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    .card1 { top: 50px; right: 50px; animation-delay: 0s; }
+    .card2 { bottom: 50px; right: 200px; animation-delay: 2s; }
+    .card3 { top: 200px; right: 350px; animation-delay: 4s; }
+
+    /* Sections */
+    .section {
+      padding: 100px 8%;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, #0066ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #888888;
+      margin-bottom: 60px;
+      font-size: 1.1rem;
+    }
+
+    /* Product Grid with Hover Effects */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .product-item {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 40px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,102,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .product-item:hover::before {
+      left: 100%;
+    }
+
+    .product-item:hover {
+      transform: translateY(-10px);
+      border-color: #0066ff;
+      box-shadow: 0 20px 40px rgba(0,102,255,0.2);
+    }
+
+    .product-icon {
+      font-size: 3rem;
+      color: #0066ff;
+      margin-bottom: 20px;
+    }
+
+    .product-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .product-item p {
+      color: #aaaaaa;
+      line-height: 1.6;
+    }
+
+    /* Stats Section with Counters */
+    .stats {
+      background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,0,0,0));
+      border-radius: 50px;
+      margin: 0 8%;
+      padding: 60px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 3rem;
+      color: #0066ff;
+      font-weight: 700;
+    }
+
+    /* Process Steps */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .step-number {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #0066ff, #00ccff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    /* Testimonials with Slider Effect */
+    .testimonials {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonial-track {
+      display: flex;
+      gap: 30px;
+      animation: scroll 30s linear infinite;
+      width: fit-content;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .testimonial-card {
+      min-width: 350px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, #0066ff, #00ccff);
+      border-radius: 50px;
+      padding: 80px;
+      text-align: center;
+      margin: 0 8%;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(0, 0, 0, 0.95);
+      padding: 60px 8% 30px;
+      margin-top: 100px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+
+    .footer h4 {
+      margin-bottom: 20px;
+      color: #0066ff;
+    }
+
+    .footer a {
+      color: #aaaaaa;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+
+    .footer a:hover {
+      color: #0066ff;
+      transform: translateX(5px);
+    }
+
+    .social {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      background: #0066ff;
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #888888;
+    }
+
+    @media (max-width: 968px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .btn-group {
+        justify-content: center;
+      }
+      
+      .hero-3d {
+        display: none;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <div class="nav-bar">
-            <div class="logo">
-                <h1>MELAN <span>Electronics</span></h1>
-            </div>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Offers</a>
-                <a href="#">Contact</a>
-            </div>
-        </div>
+
+<div class="background"></div>
+<div class="glow" id="glow"></div>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-container">
+    <div class="logo">MELAN</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="badge">
+      <i class="fas fa-microchip"></i> Future Technology
     </div>
-
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Premium Home Electronics</h1>
-            <p>Washing machines • Refrigerators • Ovens • AC • And more</p>
-        </div>
+    <h1>Premium Home<br>Appliances</h1>
+    <p>Experience the perfect blend of innovation, design, and performance. Transform your home with Melan Electronics.</p>
+    <div class="btn-group">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="#contact" class="btn-secondary">Contact Sales</a>
     </div>
-
-    <div class="container">
-        <!-- Contact Strip: WhatsApp, Email, Phone, Website -->
-        <div class="contact-bar">
-            <a href="#" class="contact-link" id="whatsappLink"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="#" class="contact-link" id="emailLink"><i class="fas fa-envelope"></i> Email</a>
-            <a href="#" class="contact-link" id="phoneLink"><i class="fas fa-phone-alt"></i> Phone</a>
-            <a href="#" class="contact-link" id="websiteLink"><i class="fas fa-globe"></i> Website</a>
-        </div>
-
-        <!-- Products: Only Home Electronics -->
-        <div class="section-title">
-            <i class="fas fa-home"></i> Home Appliances
-        </div>
-        <div class="products-grid">
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-tshirt"></i> <i class="fas fa-water"></i></div>
-                <div class="product-info">
-                    <h3>WashMaster 9kg</h3>
-                    <p>Fully automatic washing machine, inverter motor, 1400 RPM.</p>
-                    <div class="price">$499</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-temperature-low"></i> <i class="fas fa-snowflake"></i></div>
-                <div class="product-info">
-                    <h3>FrostFree Fridge</h3>
-                    <p>550L double door, no-frost, digital inverter & smart cooling.</p>
-                    <div class="price">$799</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-oven"></i> <i class="fas fa-fire"></i></div>
-                <div class="product-info">
-                    <h3>SmartBake Oven</h3>
-                    <p>Convection microwave, 32L, air fry combo, touch control.</p>
-                    <div class="price">$289</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-soap"></i> <i class="fas fa-spray-can-sparkles"></i></div>
-                <div class="product-info">
-                    <h3>AquaClean DW12</h3>
-                    <p>12 place settings dishwasher, eco wash, silent operation.</p>
-                    <div class="price">$429</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-wind"></i> <i class="fas fa-fan"></i></div>
-                <div class="product-info">
-                    <h3>CoolBreeze AC</h3>
-                    <p>1.5 ton split inverter AC, smart wifi, fast cooling.</p>
-                    <div class="price">$649</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-icon"><i class="fas fa-broom"></i> <i class="fas fa-robot"></i></div>
-                <div class="product-info">
-                    <h3>RoboVac X2</h3>
-                    <p>Robot vacuum & mop, 2500Pa suction, smart mapping.</p>
-                    <div class="price">$299</div>
-                    <a href="#" class="shop-btn">Shop Now →</a>
-                </div>
-            </div>
-        </div>
+  </div>
+  <div class="hero-3d">
+    <div class="floating-card card1">
+      <i class="fas fa-tv" style="font-size: 3rem; color: #0066ff;"></i>
+      <h3 style="margin-top: 10px;">Smart TV</h3>
     </div>
-
-    <!-- Footer Social: Instagram, TikTok, Facebook -->
-    <div class="footer-social">
-        <h3><i class="fas fa-heart" style="color:#ff8c00;"></i> Follow Melan Electronics</h3>
-        <div class="social-icons-footer">
-            <a href="#" id="instagramFooter"><i class="fab fa-instagram"></i></a>
-            <a href="#" id="tiktokFooter"><i class="fab fa-tiktok"></i></a>
-            <a href="#" id="facebookFooter"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="copyright">
-            © 2025 Melan Electronics — Quality home appliances. All rights reserved.
-        </div>
+    <div class="floating-card card2">
+      <i class="fas fa-thermometer-half" style="font-size: 3rem; color: #0066ff;"></i>
+      <h3 style="margin-top: 10px;">Smart Fridge</h3>
     </div>
+    <div class="floating-card card3">
+      <i class="fas fa-tshirt" style="font-size: 3rem; color: #0066ff;"></i>
+      <h3 style="margin-top: 10px;">Washing Machine</h3>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Contact information
-        const contacts = {
-            whatsapp: "+212612345678",
-            email: "contact@melan-electronics.com",
-            phone: "+212612345678",
-            website: "https://www.melan-electronics.com"
-        };
+<!-- Products Section -->
+<section class="section" id="products">
+  <h2 class="section-title">Our Products</h2>
+  <p class="section-subtitle">Cutting-edge appliances for modern living</p>
+  
+  <div class="product-grid">
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-tv"></i></div>
+      <h3>Smart Televisions</h3>
+      <p>4K Ultra HD, OLED & QLED displays with AI upscaling and voice control</p>
+    </div>
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-thermometer-half"></i></div>
+      <h3>Smart Refrigerators</h3>
+      <p>WiFi-enabled, energy-efficient with touchscreen and interior cameras</p>
+    </div>
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-tshirt"></i></div>
+      <h3>Washing Machines</h3>
+      <p>AI-powered, steam cleaning, smartphone control, energy saving</p>
+    </div>
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-fire"></i></div>
+      <h3>Induction Stoves</h3>
+      <p>Precision cooking, touch controls, safety features, modern design</p>
+    </div>
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-tint"></i></div>
+      <h3>Water Purifiers</h3>
+      <p>RO + UV technology, mineral enhancement, smart monitoring</p>
+    </div>
+    <div class="product-item">
+      <div class="product-icon"><i class="fas fa-volume-up"></i></div>
+      <h3>Home Audio</h3>
+      <p>Dolby Atmos, wireless surround, smart speakers, subwoofers</p>
+    </div>
+  </div>
+</section>
 
-        const socials = {
-            instagram: "https://www.instagram.com/melanelectronics",
-            tiktok: "https://www.tiktok.com/@melan_electronics",
-            facebook: "https://www.facebook.com/melanelectronics"
-        };
+<!-- Stats Section -->
+<div class="stats" id="about">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <h3 id="stat1">0</h3>
+      <p>Years Experience</p>
+    </div>
+    <div class="stat-item">
+      <h3 id="stat2">0</h3>
+      <p>Happy Customers</p>
+    </div>
+    <div class="stat-item">
+      <h3 id="stat3">0</h3>
+      <p>Products Sold</p>
+    </div>
+    <div class="stat-item">
+      <h3 id="stat4">0</h3>
+      <p>Showrooms</p>
+    </div>
+  </div>
+</div>
 
-        // Set contact links
-        const whatsappLink = document.getElementById('whatsappLink');
-        const emailLink = document.getElementById('emailLink');
-        const phoneLink = document.getElementById('phoneLink');
-        const websiteLink = document.getElementById('websiteLink');
+<!-- Process Section -->
+<section class="section">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-subtitle">Simple steps to get your appliances</p>
+  
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-number">1</div>
+      <h3>Choose Product</h3>
+      <p>Browse our collection or visit our showroom</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">2</div>
+      <h3>Place Order</h3>
+      <p>Easy checkout with secure payment</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">3</div>
+      <h3>Fast Delivery</h3>
+      <p>Free delivery & professional installation</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">4</div>
+      <h3>Enjoy Support</h3>
+      <p>24/7 customer service & warranty</p>
+    </div>
+  </div>
+</section>
 
-        if (whatsappLink) {
-            whatsappLink.setAttribute('href', `https://wa.me/${contacts.whatsapp.replace(/[^0-9+]/g, '')}?text=${encodeURIComponent("Hello! I'm interested in your home appliances.")}`);
-            whatsappLink.setAttribute('target', '_blank');
-        }
-        
-        if (emailLink) {
-            emailLink.setAttribute('href', `mailto:${contacts.email}?subject=Inquiry%20from%20Melan%20Website&body=Hi%2C%20I%20would%20like%20more%20information.`);
-        }
-        
-        if (phoneLink) {
-            phoneLink.setAttribute('href', `tel:${contacts.phone.replace(/\s/g, '')}`);
-        }
-        
-        if (websiteLink) {
-            websiteLink.setAttribute('href', contacts.website);
-            websiteLink.setAttribute('target', '_blank');
-        }
+<!-- Testimonials Section -->
+<section class="section testimonials" id="testimonials">
+  <h2 class="section-title">Customer Reviews</h2>
+  <p class="section-subtitle">What people say about us</p>
+  
+  <div class="testimonial-track">
+    <div class="testimonial-card">
+      <i class="fas fa-quote-left" style="color: #0066ff; font-size: 2rem; margin-bottom: 20px; display: block;"></i>
+      <p>"Amazing quality! The smart TV transformed my living room. Best purchase ever!"</p>
+      <h4 style="margin-top: 20px;">- Sarah Johnson</h4>
+      <div style="color: gold;">★★★★★</div>
+    </div>
+    <div class="testimonial-card">
+      <i class="fas fa-quote-left" style="color: #0066ff; font-size: 2rem; margin-bottom: 20px; display: block;"></i>
+      <p>"Professional team and excellent products. The refrigerator is a game-changer."</p>
+      <h4 style="margin-top: 20px;">- Michael Chen</h4>
+      <div style="color: gold;">★★★★★</div>
+    </div>
+    <div class="testimonial-card">
+      <i class="fas fa-quote-left" style="color: #0066ff; font-size: 2rem; margin-bottom: 20px; display: block;"></i>
+      <p>"Fast delivery and great after-sales support. Highly recommend Melan Electronics!"</p>
+      <h4 style="margin-top: 20px;">- Emily Rodriguez</h4>
+      <div style="color: gold;">★★★★★</div>
+    </div>
+    <div class="testimonial-card">
+      <i class="fas fa-quote-left" style="color: #0066ff; font-size: 2rem; margin-bottom: 20px; display: block;"></i>
+      <p>"Best electronics store in Ethiopia! Quality products and fair prices."</p>
+      <h4 style="margin-top: 20px;">- Dawit T.</h4>
+      <div style="color: gold;">★★★★★</div>
+    </div>
+    <!-- Duplicate for seamless scroll -->
+    <div class="testimonial-card">
+      <i class="fas fa-quote-left" style="color: #0066ff; font-size: 2rem; margin-bottom: 20px; display: block;"></i>
+      <p>"The washing machine is so quiet and efficient. Love the smart features!"</p>
+      <h4 style="margin-top: 20px;">- Helen K.</h4>
+      <div style="color: gold;">★★★★★</div>
+    </div>
+  </div>
+</section>
 
-        // Social footer links
-        const instagramFooter = document.getElementById('instagramFooter');
-        const tiktokFooter = document.getElementById('tiktokFooter');
-        const facebookFooter = document.getElementById('facebookFooter');
+<!-- CTA Section -->
+<section class="cta" id="contact">
+  <h2>Ready to Upgrade Your Home?</h2>
+  <p style="margin-bottom: 30px;">Get 30% off on your first purchase + Free installation</p>
+  <a href="#" class="btn-primary" style="background: white; color: #0066ff;">Claim Offer Now →</a>
+  <div style="margin-top: 40px;">
+    <p><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa, Ethiopia</p>
+    <p><i class="fas fa-phone"></i> +251 911 234 567</p>
+    <p><i class="fas fa-envelope"></i> hello@melanelectronics.com</p>
+  </div>
+</section>
 
-        if (instagramFooter) {
-            instagramFooter.setAttribute('href', socials.instagram);
-            instagramFooter.setAttribute('target', '_blank');
-        }
-        if (tiktokFooter) {
-            tiktokFooter.setAttribute('href', socials.tiktok);
-            tiktokFooter.setAttribute('target', '_blank');
-        }
-        if (facebookFooter) {
-            facebookFooter.setAttribute('href', socials.facebook);
-            facebookFooter.setAttribute('target', '_blank');
-        }
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Melan Electronics</h4>
+      <p style="color: #aaaaaa;">Premium home appliances for modern living. Innovation meets elegance.</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About Us</a>
+      <a href="#testimonials">Reviews</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Warranty</a>
+      <a href="#">Shipping Info</a>
+      <a href="#">Returns</a>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2025 Melan Electronics. All rights reserved.</p>
+  </div>
+</footer>
 
-        // Shop buttons demo alert
-        const shopBtns = document.querySelectorAll('.shop-btn');
-        shopBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('🛒 Demo: This product is available! Contact us via WhatsApp or call to order.');
-            });
-        });
+<script>
+  // Glow effect that follows mouse
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX - 250 + 'px';
+    glow.style.top = e.clientY - 250 + 'px';
+  });
 
-        // Optional: Add smooth active state for mobile touch
-        const allButtons = document.querySelectorAll('a, .shop-btn, .contact-link');
-        allButtons.forEach(btn => {
-            btn.addEventListener('touchstart', function() {
-                // Just for better touch feedback
-            });
-        });
-    </script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Counter animation
+  function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        element.textContent = target;
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current);
+      }
+    }, 30);
+  }
+
+  // Trigger counters when in view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(document.getElementById('stat1'), 10);
+        animateCounter(document.getElementById('stat2'), 15000);
+        animateCounter(document.getElementById('stat3'), 5000);
+        animateCounter(document.getElementById('stat4'), 5);
+        observer.disconnect();
+      }
+    });
+  });
+
+  observer.observe(document.querySelector('.stats'));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
