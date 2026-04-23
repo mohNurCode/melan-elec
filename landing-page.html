@@ -23,10 +23,10 @@
       overflow-x: hidden;
     }
 
-    /* Language Toggle Button */
+    /* Language Toggle Button - Adjusted margin top */
     .lang-toggle {
       position: fixed;
-      top: 85px;
+      top: 95px;
       right: 20px;
       z-index: 1001;
       background: linear-gradient(135deg, #ce2b37, #8b1522);
@@ -48,14 +48,22 @@
     }
     @media (max-width: 768px) {
       .lang-toggle {
-        top: 75px;
+        top: 85px;
         right: 15px;
         padding: 6px 12px;
         font-size: 10px;
       }
     }
+    @media (max-width: 480px) {
+      .lang-toggle {
+        top: 80px;
+        right: 12px;
+        padding: 5px 10px;
+        font-size: 9px;
+      }
+    }
 
-    /* Navigation */
+    /* Navigation - Fully Responsive */
     .nav {
       position: fixed;
       top: 20px;
@@ -93,13 +101,13 @@
       padding: 4px 14px;
       border-radius: 50px;
       color: white;
-      font-size: clamp(18px, 5vw, 26px);
+      font-size: clamp(16px, 4.5vw, 26px);
       font-weight: 800;
       letter-spacing: 1px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .logo-italy {
-      font-size: clamp(18px, 5vw, 26px);
+      font-size: clamp(16px, 4.5vw, 26px);
       font-weight: 800;
       display: inline-flex;
       flex-wrap: wrap;
@@ -132,7 +140,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.9rem;
+      font-size: clamp(12px, 3.5vw, 14px);
     }
     .nav-links a:hover { background: rgba(206, 43, 55, 0.08); color: #ce2b37; }
     .nav-links a.active { background: linear-gradient(135deg, #ce2b37, #b81c2c); color: white; }
@@ -146,7 +154,7 @@
     .menu-toggle.active span::before { transform: rotate(45deg); }
     .menu-toggle.active span::after { transform: rotate(-45deg); }
 
-    /* Hero Section */
+    /* Hero Section - Fully Responsive */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -157,7 +165,7 @@
       gap: 40px;
       flex-wrap: wrap;
     }
-    .hero-content { flex: 1; min-width: 280px; }
+    .hero-content { flex: 1; min-width: 260px; }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -165,17 +173,20 @@
       background: rgba(206, 43, 55, 0.1);
       padding: 6px 16px;
       border-radius: 50px;
-      font-size: 12px;
+      font-size: clamp(10px, 3vw, 12px);
       font-weight: 600;
       color: #ce2b37;
       margin-bottom: 20px;
     }
-    .hero h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(1.8rem, 6vw, 4rem); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
     .hero h1 span { background: linear-gradient(135deg, #ce2b37, #8b0000); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero p { font-size: 1rem; color: #444; margin-bottom: 30px; max-width: 450px; }
-    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero p { font-size: clamp(0.85rem, 3.5vw, 1rem); color: #444; margin-bottom: 30px; max-width: 450px; }
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
+    .btn-primary, .btn-secondary {
+      padding: clamp(8px, 3vw, 12px) clamp(20px, 5vw, 28px);
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
+    }
     .btn-primary {
-      padding: 12px 28px;
       background: linear-gradient(135deg, #ce2b37, #a51d2a);
       border: none;
       border-radius: 50px;
@@ -183,10 +194,8 @@
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
-      font-size: 0.9rem;
     }
     .btn-secondary {
-      padding: 12px 28px;
       background: transparent;
       border: 2px solid #ce2b37;
       border-radius: 50px;
@@ -194,50 +203,71 @@
       font-weight: 600;
       text-decoration: none;
       display: inline-block;
-      font-size: 0.9rem;
     }
-    .hero-stats { display: flex; gap: 30px; margin-top: 35px; flex-wrap: wrap; }
-    .stat-number { font-size: 1.5rem; font-weight: 800; color: #ce2b37; }
-    .animated-logo { position: relative; width: 260px; height: 260px; display: flex; justify-content: center; align-items: center; }
+    .hero-stats { display: flex; gap: clamp(15px, 5vw, 30px); margin-top: 35px; flex-wrap: wrap; }
+    .stat-number { font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 800; color: #ce2b37; }
+    .stat-label { font-size: clamp(0.7rem, 2.5vw, 0.85rem); }
+    .animated-logo { position: relative; width: clamp(180px, 40vw, 260px); height: clamp(180px, 40vw, 260px); display: flex; justify-content: center; align-items: center; margin: 0 auto; }
     .logo-ring { position: absolute; width: 100%; height: 100%; border: 3px solid rgba(0, 0, 0, 0.15); border-radius: 50%; animation: rotateRing 20s linear infinite; }
     .logo-ring::before { content: ''; position: absolute; top: -3px; left: -3px; width: 100%; height: 100%; border: 3px solid transparent; border-top-color: #009246; border-right-color: #ce2b37; border-bottom-color: #ffffff; border-left-color: #009246; border-radius: 50%; animation: rotateRing 3s linear infinite; }
     @keyframes rotateRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    .logo-inner { width: 160px; height: 160px; background: linear-gradient(135deg, rgba(0,146,70,0.08), rgba(255,255,255,0.2), rgba(206,43,55,0.08)); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(6px); border: 2px solid #000000; }
-    .logo-letter-m { font-size: 60px; font-weight: 800; background: linear-gradient(135deg, #009246, #ffffff, #ce2b37); -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientShift 3s ease infinite; }
+    .logo-inner { width: 70%; height: 70%; background: linear-gradient(135deg, rgba(0,146,70,0.08), rgba(255,255,255,0.2), rgba(206,43,55,0.08)); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(6px); border: 2px solid #000000; text-align: center; }
+    .logo-letter-m { font-size: clamp(40px, 12vw, 60px); font-weight: 800; background: linear-gradient(135deg, #009246, #ffffff, #ce2b37); -webkit-background-clip: text; background-clip: text; color: transparent; animation: gradientShift 3s ease infinite; }
     @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
     .orbiting-dot { position: absolute; width: 7px; height: 7px; background: #009246; border-radius: 50%; animation: orbit 4s linear infinite; }
-    @keyframes orbit { 0% { transform: rotate(0deg) translateX(115px) rotate(0deg); background: #009246; } 33% { transform: rotate(120deg) translateX(115px) rotate(-120deg); background: #ffffff; } 66% { transform: rotate(240deg) translateX(115px) rotate(-240deg); background: #ce2b37; } 100% { transform: rotate(360deg) translateX(115px) rotate(-360deg); background: #009246; } }
+    @keyframes orbit { 
+      0% { transform: rotate(0deg) translateX(calc(50% - 10px)) rotate(0deg); background: #009246; } 
+      33% { transform: rotate(120deg) translateX(calc(50% - 10px)) rotate(-120deg); background: #ffffff; } 
+      66% { transform: rotate(240deg) translateX(calc(50% - 10px)) rotate(-240deg); background: #ce2b37; } 
+      100% { transform: rotate(360deg) translateX(calc(50% - 10px)) rotate(-360deg); background: #009246; } 
+    }
 
-    /* Category Navigation */
-    .category-nav { display: flex; justify-content: center; gap: 15px; margin: 30px auto 40px; flex-wrap: wrap; padding: 0 15px; }
-    .category-nav-btn { padding: 10px 24px; background: transparent; border: 2px solid #e0e0e0; border-radius: 50px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+    /* Category Navigation - Responsive */
+    .category-nav { display: flex; justify-content: center; gap: clamp(10px, 3vw, 15px); margin: 30px auto 40px; flex-wrap: wrap; padding: 0 15px; }
+    .category-nav-btn { 
+      padding: clamp(6px, 2.5vw, 10px) clamp(15px, 4vw, 24px); 
+      background: transparent; 
+      border: 2px solid #e0e0e0; 
+      border-radius: 50px; 
+      font-weight: 600; 
+      font-size: clamp(0.7rem, 2.5vw, 0.9rem); 
+      cursor: pointer; 
+      transition: 0.3s; 
+      display: flex; 
+      align-items: center; 
+      gap: 6px; 
+    }
     .category-nav-btn.active { background: linear-gradient(135deg, #ce2b37, #b81c2c); border-color: #ce2b37; color: white; }
 
-    /* Products Section */
+    /* Products Section - Responsive Grid */
     .section { padding: 40px 4% 60px; max-width: 1400px; margin: 0 auto; }
-    .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); text-align: center; margin-bottom: 12px; font-weight: 800; }
+    .section-title { font-size: clamp(1.5rem, 5vw, 2.5rem); text-align: center; margin-bottom: 12px; font-weight: 800; }
     .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, #009246, #ce2b37); margin: 12px auto 0; border-radius: 3px; }
-    .section-subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: 0.95rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-    .product-card { background: #ffffff; border-radius: 24px; overflow: hidden; transition: all 0.4s ease; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); border: 1px solid rgba(206, 43, 55, 0.1); position: relative; }
+    .section-subtitle { text-align: center; color: #666; margin-bottom: 30px; font-size: clamp(0.8rem, 3vw, 0.95rem); padding: 0 15px; }
+    .product-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 25px; 
+    }
+    .product-card { 
+      background: #ffffff; 
+      border-radius: 24px; 
+      overflow: hidden; 
+      transition: all 0.4s ease; 
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
+      border: 1px solid rgba(206, 43, 55, 0.1); 
+      position: relative; 
+    }
     .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 35px rgba(206, 43, 55, 0.12); }
     .commercial-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, #ce2b37, #8b1522); color: white; padding: 4px 12px; border-radius: 40px; font-size: 10px; font-weight: 700; z-index: 5; display: flex; align-items: center; gap: 4px; }
     .product-img { width: 100%; height: 200px; background: linear-gradient(145deg, #f5f5f5, #fff); display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .product-card:hover .product-img img { transform: scale(1.03); }
     .product-info { padding: 18px 18px 22px; text-align: left; }
-    .product-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
-    .product-price { font-size: 1.3rem; font-weight: 800; color: #ce2b37; margin: 8px 0; }
-    .product-desc { color: #666; font-size: 0.8rem; line-height: 1.4; margin-bottom: 15px; }
-    
-    /* Video & QR Section inside product card */
-    .product-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    .product-info h3 { font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 700; margin-bottom: 6px; }
+    .product-price { font-size: clamp(1.1rem, 4vw, 1.3rem); font-weight: 800; color: #ce2b37; margin: 8px 0; }
+    .product-desc { color: #666; font-size: clamp(0.7rem, 2.5vw, 0.8rem); line-height: 1.4; margin-bottom: 15px; }
+    .product-actions { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
     .video-btn, .qr-btn {
       background: transparent;
       border: 1px solid #ce2b37;
@@ -254,6 +284,24 @@
       text-decoration: none;
     }
     .video-btn:hover, .qr-btn:hover { background: #ce2b37; color: white; }
+    .shop-link {
+      background: transparent;
+      border: 1.5px solid #ce2b37;
+      padding: 6px 16px;
+      border-radius: 40px;
+      color: #ce2b37;
+      font-weight: 600;
+      font-size: 0.8rem;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .shop-link:hover { background: #ce2b37; color: white; }
+
+    /* QR Modal */
     .qr-code-modal {
       display: none;
       position: fixed;
@@ -284,64 +332,108 @@
       border-radius: 30px;
       cursor: pointer;
     }
-    .shop-link {
-      background: transparent;
-      border: 1.5px solid #ce2b37;
-      padding: 6px 16px;
-      border-radius: 40px;
-      color: #ce2b37;
-      font-weight: 600;
-      font-size: 0.8rem;
-      transition: 0.3s;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .shop-link:hover { background: #ce2b37; color: white; }
 
-    /* Other Sections */
+    /* Other Sections - Responsive */
     .about-page, .company-section, .features, .stats-section, .cta, .footer { margin: 20px 4%; }
     .about-page { padding: 40px 5%; background: linear-gradient(135deg, #ffffff, #fff8f8); border-radius: 30px; }
     .about-container { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
     .about-text { flex: 1; min-width: 260px; }
-    .about-text h2 { font-size: 1.8rem; margin-bottom: 15px; }
+    .about-text h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); margin-bottom: 15px; }
+    .about-text p { font-size: clamp(0.8rem, 3vw, 0.9rem); line-height: 1.6; margin-bottom: 15px; }
     .about-stats { display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap; }
-    .about-stat h3 { font-size: 1.6rem; color: #ce2b37; }
-    .about-image img { width: 100%; max-width: 350px; border-radius: 25px; }
+    .about-stat h3 { font-size: clamp(1.2rem, 4vw, 1.6rem); color: #ce2b37; }
+    .about-stat p { font-size: clamp(0.7rem, 2.5vw, 0.85rem); }
+    .about-image img { width: 100%; max-width: 350px; border-radius: 25px; height: auto; }
     .company-section { background: #f8f8f8; border-radius: 30px; padding: 40px 4%; text-align: center; }
-    .company-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 30px; }
-    .company-item { text-align: center; width: 100px; }
-    .company-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 15px; margin-bottom: 10px; }
+    .company-section h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); margin-bottom: 15px; }
+    .company-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+    .company-item { text-align: center; width: 80px; }
+    .company-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 15px; margin-bottom: 8px; }
+    .company-item span { font-size: 0.7rem; display: block; }
     .features { background: #fff8f8; border-radius: 30px; padding: 40px 20px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 30px; text-align: center; }
-    .feature i { font-size: 2rem; color: #ce2b37; margin-bottom: 10px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 25px; text-align: center; }
+    .feature i { font-size: 1.8rem; color: #ce2b37; margin-bottom: 10px; }
+    .feature h4 { font-size: clamp(0.9rem, 3vw, 1rem); }
+    .feature p { font-size: clamp(0.7rem, 2.5vw, 0.8rem); }
     .stats-section { background: linear-gradient(135deg, #ce2b37, #8b1522); border-radius: 25px; padding: 40px 20px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 30px; text-align: center; }
-    .stat-white h3 { font-size: 1.8rem; color: white; font-weight: 800; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 25px; text-align: center; }
+    .stat-white h3 { font-size: clamp(1.3rem, 4.5vw, 1.8rem); color: white; font-weight: 800; }
+    .stat-white p { font-size: clamp(0.7rem, 2.5vw, 0.8rem); color: rgba(255,255,255,0.9); }
     .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 30px; }
     .testimonial-card { background: #ffffff; border: 1px solid #ffdede; border-radius: 20px; padding: 20px; }
+    .testimonial-card p { font-size: clamp(0.8rem, 2.5vw, 0.85rem); }
     .cta { background: #fff5f5; border-radius: 25px; padding: 40px 20px; text-align: center; }
+    .cta h2 { font-size: clamp(1.3rem, 5vw, 1.6rem); margin-bottom: 12px; }
+    .cta p { font-size: clamp(0.8rem, 3vw, 0.9rem); margin-bottom: 20px; }
     .footer { background: #1a1a1a; color: #999; padding: 40px 4% 25px; margin-top: 40px; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 30px; }
-    .footer h4 { color: white; margin-bottom: 15px; }
-    .footer a { color: #999; text-decoration: none; display: block; margin-bottom: 8px; font-size: 0.8rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 30px; }
+    .footer h4 { color: white; margin-bottom: 15px; font-size: clamp(0.9rem, 3vw, 1rem); }
+    .footer a { color: #999; text-decoration: none; display: block; margin-bottom: 8px; font-size: clamp(0.7rem, 2.5vw, 0.8rem); }
     .footer a:hover { color: #ce2b37; }
-    .social-links { display: flex; gap: 12px; margin-top: 15px; }
-    .social-links a { width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .back-to-top { position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px; background: #ce2b37; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 100; }
+    .social-links { display: flex; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+    .social-links a { width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+    .social-links a:hover { background: #ce2b37; color: white; transform: translateY(-3px); }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: #ce2b37;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 100;
+    }
     .back-to-top.visible { opacity: 1; }
+    .back-to-top:hover { transform: translateY(-3px); background: #8b1522; }
     .fade-up { opacity: 0; transform: translateY(20px); transition: 0.5s; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+    /* Mobile Menu */
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-links { position: fixed; top: 70px; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; gap: 12px; transform: translateY(-150%); transition: 0.3s; box-shadow: 0 15px 25px rgba(0,0,0,0.1); z-index: 999; }
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        gap: 12px;
+        transform: translateY(-150%);
+        transition: 0.3s;
+        box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        z-index: 999;
+      }
       .nav-links.active { transform: translateY(0); }
-      .hero { text-align: center; }
-      .animated-logo { width: 200px; height: 200px; margin: 0 auto; }
-      .logo-inner { width: 130px; height: 130px; }
-      @keyframes orbit { 0% { transform: rotate(0deg) translateX(88px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(88px) rotate(-360deg); } }
+      .nav-links a { justify-content: center; }
+      .hero { text-align: center; padding: 90px 4% 50px; }
+      .hero-content { text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-stats { justify-content: center; }
+      .btn-group { justify-content: center; }
+      .product-grid { grid-template-columns: 1fr; gap: 20px; }
+      .about-container { text-align: center; }
+      .about-stats { justify-content: center; }
+      .footer-grid { text-align: center; }
+      .social-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-container { padding: 10px 16px; }
+      .logo-melan { padding: 3px 10px; }
+      .category-nav-btn { padding: 5px 12px; font-size: 0.7rem; }
+      .product-img { height: 160px; }
+      .product-info { padding: 14px; }
+      .about-page, .company-section, .features, .stats-section, .cta { margin: 15px 3%; padding: 25px 15px; }
+      .company-item { width: 70px; }
+      .company-item img { width: 45px; height: 45px; }
     }
   </style>
 </head>
@@ -369,7 +461,7 @@
     <h1>Passion for <br><span>Italian Design</span> & Innovation</h1>
     <p>Bold red energy meets Mediterranean elegance. Discover premium electronics crafted with Italian spirit.</p>
     <div class="btn-group"><a href="#products" class="btn-primary">Shop Collection →</a><a href="#contact" class="btn-secondary">Contact Us</a></div>
-    <div class="hero-stats"><div><div class="stat-number">12+</div><div>Years Excellence</div></div><div><div class="stat-number">20k+</div><div>Happy Families</div></div><div><div class="stat-number">8</div><div>Stores</div></div></div>
+    <div class="hero-stats"><div><div class="stat-number">12+</div><div class="stat-label">Years Excellence</div></div><div><div class="stat-number">20k+</div><div class="stat-label">Happy Families</div></div><div><div class="stat-number">8</div><div class="stat-label">Stores</div></div></div>
   </div>
   <div class="animated-logo"><div class="logo-ring"></div><div class="orbiting-dot"></div><div class="orbiting-dot"></div><div class="orbiting-dot"></div><div class="orbiting-dot"></div><div class="logo-inner"><div class="logo-letter-m">M</div><div>MELAN<br>ITALY</div></div></div>
 </section>
@@ -384,7 +476,6 @@
   <div class="product-grid" id="productGrid"></div>
 </section>
 
-<!-- QR Code Modal -->
 <div id="qrModal" class="qr-code-modal">
   <div class="qr-modal-content">
     <h4>Scan QR Code</h4>
@@ -395,7 +486,7 @@
 </div>
 
 <section class="about-page" id="about">
-  <div class="about-container"><div class="about-text"><h2>About Melan Italy</h2><p>Founded with passion for Italian design and cutting-edge technology, Melan Italy brings world-class innovation to homes and businesses across Ethiopia.</p><p>Every product is crafted with precision, backed by 5-year warranty, and supported by 24/7 customer service.</p><div class="about-stats"><div><h3>50+</h3><p>Models</p></div><div><h3>15+</h3><p>Awards</p></div><div><h3>100%</h3><p>Italian Design</p></div></div></div><div class="about-image"><img src="https://placehold.co/500x400/e8e8e8/ce2b37?text=Melan+Italy+Showroom" alt="Melan Italy"></div></div>
+  <div class="about-container"><div class="about-text"><h2>About Melan Italy</h2><p>Founded with passion for Italian design and cutting-edge technology, Melan Italy brings world-class innovation to homes and businesses across Ethiopia.</p><p>Every product is crafted with precision, backed by 5-year warranty, and supported by 24/7 customer service.</p><div class="about-stats"><div class="about-stat"><h3>50+</h3><p>Models</p></div><div class="about-stat"><h3>15+</h3><p>Awards</p></div><div class="about-stat"><h3>100%</h3><p>Italian Design</p></div></div></div><div class="about-image"><img src="https://placehold.co/500x400/e8e8e8/ce2b37?text=Melan+Italy+Showroom" alt="Melan Italy"></div></div>
 </section>
 
 <section class="company-section" id="company"><h2>Companies We Work With</h2><p>Trusted by leading enterprises across Ethiopia</p><div class="company-logos"><div class="company-item"><img src="https://placehold.co/100x100/009246/white?text=MasterChef"><span>MASTER CHEF</span></div><div class="company-item"><img src="https://placehold.co/100x100/ce2b37/white?text=Hospital"><span>St. Paul Hospital</span></div><div class="company-item"><img src="https://placehold.co/100x100/1a1a1a/white?text=Bank"><span>Bank of Abyssinia</span></div><div class="company-item"><img src="https://placehold.co/100x100/0066cc/white?text=EthioTel"><span>Ethio Telecom</span></div><div class="company-item"><img src="https://placehold.co/100x100/ce2b37/white?text=Retail"><span>Habesha Retail</span></div><div class="company-item"><img src="https://placehold.co/100x100/009246/white?text=BGI"><span>BGI Ethiopia</span></div></div></section>
@@ -412,14 +503,13 @@
 <div class="back-to-top" id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-  // Product Data with YouTube tutorial videos
   const productsData = {
     home: [
       { name: "Smart TV", price: "11,299 Birr", desc: "65\" 4K OLED, AI upscaling", badge: "BEST SELLER", img: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=300&fit=crop", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", productUrl: "https://melanitaly.com/tv" },
       { name: "Fridge", price: "100,150 Birr", desc: "WiFi-enabled, craft ice", badge: "PREMIUM", img: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=500&h=300&fit=crop", videoUrl: "https://www.youtube.com/embed/W7P7KjVv7W8", productUrl: "https://melanitaly.com/fridge" },
       { name: "Washing Machine", price: "70,000 Birr", desc: "Steam+TurboWash, 12kg", badge: "TOP RATED", img: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=500&h=300&fit=crop", videoUrl: "https://www.youtube.com/embed/7X7Td6W7X7Y", productUrl: "https://melanitaly.com/washer" },
-      { name: "Induction Cooktop", price: "16,629 Birr", desc: "9 power zones, child lock", badge: "SMART", img: "images/dual.jpg", videoUrl: "https://www.youtube.com/embed/8X7Td6W7X8Z", productUrl: "https://melanitaly.com/induction" },
-      { name: "Water Purifier", price: "11,459 Birr", desc: "Hot & cold, RO filtration", badge: "ECO", img: "images/water.jpg", videoUrl: "https://www.youtube.com/embed/9Y7Td6W7Y9A", productUrl: "https://melanitaly.com/water" },
+      { name: "Induction Cooktop", price: "16,629 Birr", desc: "9 power zones, child lock", badge: "SMART", img: "https://placehold.co/600x400/ce2b37/white?text=Induction", videoUrl: "https://www.youtube.com/embed/8X7Td6W7X8Z", productUrl: "https://melanitaly.com/induction" },
+      { name: "Water Purifier", price: "11,459 Birr", desc: "Hot & cold, RO filtration", badge: "ECO", img: "https://placehold.co/600x400/009246/white?text=Purifier", videoUrl: "https://www.youtube.com/embed/9Y7Td6W7Y9A", productUrl: "https://melanitaly.com/water" },
       { name: "Sound Bar", price: "5,490 Birr", desc: "Dolby Atmos, wireless", badge: "CINEMA", img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500&h=300&fit=crop", videoUrl: "https://www.youtube.com/embed/0X7Td6W7X0B", productUrl: "https://melanitaly.com/soundbar" }
     ],
     commercial: [
@@ -449,26 +539,19 @@
               <a href="${p.videoUrl}" target="_blank" class="video-btn"><i class="fab fa-youtube"></i> Tutorial</a>
               <button class="qr-btn" data-url="${p.productUrl}" data-name="${p.name}"><i class="fas fa-qrcode"></i> QR Code</button>
             </div>
-            <a href="#" class="shop-link" style="margin-top: 12px; display: inline-block;">Shop Now <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="shop-link">Shop Now <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       `).join('');
       grid.style.opacity = '1';
       document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-      
-      // Add QR code click handlers
       document.querySelectorAll('.qr-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           e.stopPropagation();
           const url = this.dataset.url;
-          const name = this.dataset.name;
           document.getElementById('qrModal').style.display = 'flex';
           document.getElementById('qrCodeContainer').innerHTML = '';
-          new QRCode(document.getElementById('qrCodeContainer'), {
-            text: url,
-            width: 200,
-            height: 200
-          });
+          new QRCode(document.getElementById('qrCodeContainer'), { text: url, width: 200, height: 200 });
         });
       });
     }, 150);
@@ -484,10 +567,7 @@
   });
   renderProducts('home');
 
-  // Close modal on outside click
-  document.getElementById('qrModal').addEventListener('click', function(e) {
-    if(e.target === this) this.style.display = 'none';
-  });
+  document.getElementById('qrModal').addEventListener('click', function(e) { if(e.target === this) this.style.display = 'none'; });
 
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('nav');
@@ -540,17 +620,17 @@
     menuToggle.addEventListener('click', () => { menuToggle.classList.toggle('active'); navLinks.classList.toggle('active'); });
   }
 
-  // Language Toggle (simplified)
   let isAmharic = false;
   const langToggle = document.getElementById('langToggle');
   langToggle.addEventListener('click', () => {
     isAmharic = !isAmharic;
     langToggle.querySelector('span').textContent = isAmharic ? "ENGLISH" : "አማርኛ";
     if(isAmharic) {
-      document.querySelector('.hero .badge span').textContent = "የጣሊያን ልቀት · ቀይ ፍቅር";
+      document.querySelector('.hero .badge').innerHTML = '<i class="fas fa-flag-checkered"></i> የጣሊያን ልቀት · ቀይ ፍቅር';
       document.querySelector('.hero h1').innerHTML = 'ለ <br><span>የጣሊያን ዲዛይን</span> ፍቅር እና ፈጠራ';
-      document.querySelector('.hero p').textContent = "ደፋር ቀይ ሃይል ከሜዲትራኒያን ውበት ጋር ይገናኛል።";
-      document.querySelector('.btn-shop')?.setAttribute('data-text', 'ግዢ ጀምር');
+      document.querySelector('.hero p').textContent = "ደፋር ቀይ ሃይል ከሜዲትራኒያን ውበት ጋር ይገናኛል። በጣሊያን መንፈስ የተሰሩ ፕሪሚየም ኤሌክትሮኒክስ ዕቃዎችን ያግኙ።";
+      document.querySelector('.btn-primary').innerHTML = 'ግዢ ጀምር →';
+      document.querySelector('.btn-secondary').innerHTML = 'አግኙን';
     } else {
       location.reload();
     }
